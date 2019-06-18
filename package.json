@@ -1,0 +1,38 @@
+{
+  "name": "tiny-i18n-node",
+  "version": "0.0.1",
+  "description": "Tiny module to handle NodeJS i18n",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisonmonteiro/tiny-i18n-node.git"
+  },
+  "keywords": [
+    "i18n",
+    "node",
+    "javascript",
+    "js",
+    "translation",
+    "dots"
+  ],
+  "author": {
+    "name": "Alison Monteiro",
+    "url": "alisonmonteiro.com.br"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alisonmonteiro/tiny-i18n-node/issues"
+  },
+  "homepage": "https://github.com/alisonmonteiro/tiny-i18n-node#readme",
+  "devDependencies": {
+    "ava": "^2.1.0",
+    "xo": "^0.24.0"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false
+  }
+}
