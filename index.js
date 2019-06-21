@@ -40,35 +40,43 @@ class Trans {
 
   translator(term) {
     const file = `${path.resolve(this.file)}/${this.locale}.json`
+
     try {
       const data = fs.readFileSync(file)
       const content = JSON.parse(data.toString('utf8'))
 
       return this.getEntries(content, term) || this.defaultValue
     } catch (error) {
+      const fallback = this.defaultValue === '' ? false : this.defaultValue
+
       if (error.code === 'ENOENT') {
         console.error(`File ${file} not found!`)
-        return false
+        console.error(`${fallback ? ` - Default value ${fallback} will be applied` : ''}`)
+        return fallback
       }
 
-      throw error
+      console.error(error)
+      return fallback
     }
   }
 
-  setLocale(locale) {
+  _setLocale(locale) {
     this.locale = locale
   }
 
-  setDefaultValue(val) {
+  _setDefaultValue(val) {
     const validDefault = isString(val) ? val : ''
     this.defaultValue = validDefault
   }
 }
 
-module.exports = function (term, defaultValue = '') {
-  const trans = new Trans()
-  trans.setDefaultValue(defaultValue)
+const instance = new Trans()
 
-  return trans.translator(term)
+function translate(term, defaultValue = '') {
+  instance._setDefaultValue(defaultValue)
+  return instance.translator(term)
 }
 
+// Public
+module.exports = translate
+module.exports.setLocale = locale => instance._setLocale(locale)

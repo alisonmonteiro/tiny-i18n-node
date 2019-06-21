@@ -1,0 +1,12 @@
+{
+  "test": "Teste",
+  "social": {
+    "twitter": "twitter.com/twitter",
+    "instagram": "instagram.com/instagram"
+  },
+  "footer": {
+    "address": {
+      "zip": "60000"
+    }
+  }
+}

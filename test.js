@@ -16,7 +16,7 @@ test('try to translate invalid terms', t => {
   t.is(m(termObject), expectObject)
 })
 
-test('try to translate invalid terms but with default', t => {
+test('try to translate invalid terms but with default value', t => {
   const termDefault = 'Oops!'
   const invalidTermWithDefault = undefined
 
@@ -28,7 +28,7 @@ test('try to translate invalid terms but with default', t => {
   t.is(m(invalidTermWithInvalidDefault, termInvalidDefault), termInvalidDefaultCorrection)
 })
 
-test('translate plain and not plain', t => {
+test('translate plain and not plain items', t => {
   const term = 'test'
   const expect = 'Test'
 
@@ -41,4 +41,27 @@ test('translate plain and not plain', t => {
   t.is(m(term), expect)
   t.is(m(termTwo), expectTwo)
   t.is(m(termThree), expectThree)
+})
+
+// New location
+test('translate using different locales', t => {
+  m.setLocale('es')
+  t.is(m('test'), 'Teste')
+
+  m.setLocale('en')
+  t.is(m('test'), 'Test')
+})
+
+test('try to translate with invalid locale', t => {
+  m.setLocale('esnds_')
+  t.is(m([]), false)
+  t.is(m({}), false)
+  t.is(m('testing string'), false)
+})
+
+test('try to translate passing a default value with an invalid locale', t => {
+  m.setLocale('invalid_xs')
+  t.is(m('testing string', []), false)
+  t.is(m('testing string', ''), false)
+  t.is(m('testing string', 'default'), 'default')
 })
