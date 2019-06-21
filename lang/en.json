@@ -1,12 +1,13 @@
 {
-  "test": "Test",
-  "social": {
-    "twitter": "twitter.com/twitter",
-    "instagram": "instagram.com/instagram"
+  "download": "Download",
+  "community": {
+    "get_involved": "Get Involved"
   },
-  "footer": {
+  "about": {
+    "name": "Name",
+    "what": "What is it?",
     "address": {
-      "zip": "60000"
+      "zip": "Zip Code"
     }
   }
 }

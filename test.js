@@ -29,14 +29,14 @@ test('try to translate invalid terms but with default value', t => {
 })
 
 test('translate plain and not plain items', t => {
-  const term = 'test'
-  const expect = 'Test'
+  const term = 'download'
+  const expect = 'Download'
 
-  const termTwo = 'social.twitter'
-  const expectTwo = 'twitter.com/twitter'
+  const termTwo = 'community.get_involved'
+  const expectTwo = 'Get Involved'
 
-  const termThree = 'footer.address.zip'
-  const expectThree = '60000'
+  const termThree = 'about.address.zip'
+  const expectThree = 'Zip Code'
 
   t.is(m(term), expect)
   t.is(m(termTwo), expectTwo)
@@ -46,10 +46,12 @@ test('translate plain and not plain items', t => {
 // New location
 test('translate using different locales', t => {
   m.setLocale('es')
-  t.is(m('test'), 'Teste')
+  t.is(m('download'), 'Descargar')
+  t.is(m('about.name'), 'Nombre')
+  t.is(m('about.what'), '¿Qué es?')
 
   m.setLocale('en')
-  t.is(m('test'), 'Test')
+  t.is(m('about.name'), 'Name')
 })
 
 test('try to translate with invalid locale', t => {

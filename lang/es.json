@@ -1,12 +1,13 @@
 {
-  "test": "Teste",
-  "social": {
-    "twitter": "twitter.com/twitter",
-    "instagram": "instagram.com/instagram"
+  "download": "Descargar",
+  "community": {
+    "get_involved": "Mantente envuelto"
   },
-  "footer": {
+  "about": {
+    "name": "Nombre",
+    "what": "¿Qué es?",
     "address": {
-      "zip": "60000"
+      "zip": "Código postal"
     }
   }
 }
