@@ -67,3 +67,11 @@ test('try to translate passing a default value with an invalid locale', t => {
   t.is(m('testing string', ''), false)
   t.is(m('testing string', 'default'), 'default')
 })
+
+test('get/set different locations', t => {
+  m.setLocale('en')
+  t.is(m.getLocale(), 'en')
+
+  m.setLocale('de')
+  t.is(m.getLocale(), 'de')
+})

@@ -80,3 +80,4 @@ function translate(term, defaultValue = '') {
 // Public
 module.exports = translate
 module.exports.setLocale = locale => instance._setLocale(locale)
+module.exports.getLocale = () => instance.locale
