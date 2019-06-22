@@ -1,11 +1,21 @@
 # tiny-translation-node
 The simplest NodeJS i18n module
 
+## Install
+
+```
+$ npm install tiny-i18n-node
+```
+
 ## Usage
 
-First of all, create your `lang/*.json` files.
+First of all, create your `lang/*.json` files inside your root folder.
+
+<details><summary>See some examples</summary>
+<p>
 
 en.json
+
 ```json
 {
   "module": {
@@ -22,6 +32,17 @@ es.json
   }
 }
 ```
+
+br.json
+```json
+{
+  "module": {
+    "description": "O mais simples módulo de internacionalização utilizando NodeJS"
+  }
+}
+```
+</p>
+</details>
 
 Then use it:
 
@@ -44,3 +65,7 @@ Or switch between them:
 trans.setLocale('es')
 trans('module.description') //=> "Pequeño módulo para manejar la internacionalización de Node JS"
 ```
+
+## License
+
+MIT © [Alison Monteiro](https://alisonmonteiro.com.br/)
