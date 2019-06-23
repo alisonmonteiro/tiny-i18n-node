@@ -4,7 +4,8 @@
   "description": "Tiny module to handle NodeJS i18n",
   "main": "index.js",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava",
+    "coverage": "nyc ava"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   "homepage": "https://github.com/alisonmonteiro/tiny-i18n-node#readme",
   "devDependencies": {
     "ava": "^2.1.0",
+    "nyc": "^14.1.1",
     "xo": "^0.24.0"
   },
   "xo": {
