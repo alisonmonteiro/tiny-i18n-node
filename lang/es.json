@@ -1,10 +1,12 @@
 {
   "download": "Descargar",
   "community": {
-    "get_involved": "Mantente envuelto"
+    "get_involved": "Mantente envuelto",
+    "welcome": "¡Bienvenido, :name!"
   },
   "about": {
     "name": "Nombre",
+    "info": "Mi nombre es :name y tengo :age años",
     "what": "¿Qué es?",
     "address": {
       "zip": "Código postal"

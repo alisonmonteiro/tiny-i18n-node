@@ -20,6 +20,20 @@ class Trans {
     this.defaultValue = null
   }
 
+  paramsReplacements(string = '', replacements = {}) {
+    if (!isString(string) || !isPlainObject(replacements)) {
+      return false
+    }
+
+    for (const item in replacements) {
+      if (hasOwnProp(replacements, item)) {
+        string = string.replace(new RegExp(`:${item}`, 'g'), replacements[item])
+      }
+    }
+
+    return string
+  }
+
   normalizeKeys(keys, separator = '.') {
     const valid = isString(keys) ? keys : ''
 
@@ -38,20 +52,28 @@ class Trans {
     }, translations)
   }
 
-  translator(term) {
+  translator(term, replacements) {
     const file = `${path.resolve(this.file)}/${this.locale}.json`
 
     try {
       const data = fs.readFileSync(file)
       const content = JSON.parse(data.toString('utf8'))
+      const translated = this.getEntries(content, term) || this.defaultValue
 
-      return this.getEntries(content, term) || this.defaultValue
+      if (isPlainObject(replacements)) {
+        return this.paramsReplacements(translated, replacements)
+      }
+
+      return translated
     } catch (error) {
       const fallback = this.defaultValue === '' ? false : this.defaultValue
 
       if (error.code === 'ENOENT') {
-        console.error(`File ${file} not found!`)
-        console.error(`${fallback ? ` - Default value ${fallback} will be applied` : ''}`)
+        if (process.env.NODE_ENV !== 'test') {
+          console.error(`File ${file} not found!`)
+          console.error(`${fallback ? ` - Default value ${fallback} will be applied` : ''}`)
+        }
+
         return fallback
       }
 
@@ -72,9 +94,9 @@ class Trans {
 
 const instance = new Trans()
 
-function translate(term, defaultValue = '') {
+function translate(term, replacements = null, defaultValue = '') {
   instance._setDefaultValue(defaultValue)
-  return instance.translator(term)
+  return instance.translator(term, replacements)
 }
 
 // Public

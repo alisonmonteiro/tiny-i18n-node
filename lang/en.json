@@ -1,10 +1,12 @@
 {
   "download": "Download",
   "community": {
-    "get_involved": "Get Involved"
+    "get_involved": "Get Involved",
+    "welcome": "Welcome, :name!"
   },
   "about": {
     "name": "Name",
+    "info": "My name is :name and I'm :age",
     "what": "What is it?",
     "address": {
       "zip": "Zip Code"

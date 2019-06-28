@@ -1,6 +1,8 @@
 import test from 'ava'
 import m from '.'
 
+process.env.NODE_ENV = 'test'
+
 test('try to translate invalid terms', t => {
   const termString = 'invalid string'
   const expectString = ''
@@ -24,8 +26,8 @@ test('try to translate invalid terms but with default value', t => {
   const termInvalidDefault = {}
   const invalidTermWithInvalidDefault = undefined
 
-  t.is(m(invalidTermWithDefault, termDefault), termDefault)
-  t.is(m(invalidTermWithInvalidDefault, termInvalidDefault), termInvalidDefaultCorrection)
+  t.is(m(invalidTermWithDefault, null, termDefault), termDefault)
+  t.is(m(invalidTermWithInvalidDefault, null, termInvalidDefault), termInvalidDefaultCorrection)
 })
 
 test('translate plain and not plain items', t => {
@@ -41,6 +43,16 @@ test('translate plain and not plain items', t => {
   t.is(m(term), expect)
   t.is(m(termTwo), expectTwo)
   t.is(m(termThree), expectThree)
+})
+
+test('try to translate with params', t => {
+  t.is(m('community.welcome', {name: 'Alison'}), 'Welcome, Alison!')
+  t.is(m('about.info', {name: 'Alison', age: 24}), 'My name is Alison and I\'m 24')
+  t.is(m('invalid.params', {notValid: ';)'}), '')
+  t.is(m('', null), '')
+
+  m.setLocale('es')
+  t.is(m('about.info', {name: 'Alison', age: 24}), 'Mi nombre es Alison y tengo 24 años')
 })
 
 // New location
@@ -63,9 +75,9 @@ test('try to translate with invalid locale', t => {
 
 test('try to translate passing a default value with an invalid locale', t => {
   m.setLocale('invalid_xs')
-  t.is(m('testing string', []), false)
-  t.is(m('testing string', ''), false)
-  t.is(m('testing string', 'default'), 'default')
+  t.is(m('testing string', null, []), false)
+  t.is(m('testing string', null, ''), false)
+  t.is(m('testing string', null, 'default'), 'default')
 })
 
 test('get/set different locations', t => {

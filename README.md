@@ -20,6 +20,9 @@ en.json
 {
   "module": {
     "description": "The simplest NodeJS i18n module"
+  },
+  "users": {
+    "welcome": "Welcome, :name!"
   }
 }
 ```
@@ -29,6 +32,9 @@ es.json
 {
   "module": {
     "description": "El módulo de internacionalización NodeJS más sencillo"
+  },
+  "users": {
+    "welcome": "¡Bienvenido, :name!"
   }
 }
 ```
@@ -38,6 +44,9 @@ br.json
 {
   "module": {
     "description": "O mais simples módulo de internacionalização utilizando NodeJS"
+  },
+  "users": {
+    "welcome": "Bem-vindo, :name!"
   }
 }
 ```
@@ -64,6 +73,12 @@ Or switch between them:
 // Switch to Spanish
 trans.setLocale('es')
 trans('module.description') //=> "Pequeño módulo para manejar la internacionalización de Node JS"
+```
+
+Set some replacements:
+
+```javascript
+trans('users.welcome', {name: 'John'}) //=> "Welcome, John!"
 ```
 
 ## License
