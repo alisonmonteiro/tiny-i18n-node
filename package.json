@@ -1,6 +1,6 @@
 {
   "name": "tiny-i18n-node",
-  "version": "0.0.2-alpha.2",
+  "version": "0.0.2-alpha.3",
   "description": "Tiny module to handle NodeJS i18n",
   "main": "index.js",
   "scripts": {
