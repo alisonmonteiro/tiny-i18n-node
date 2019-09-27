@@ -103,3 +103,4 @@ function translate(term, replacements = null, defaultValue = '') {
 module.exports = translate
 module.exports.setLocale = locale => instance._setLocale(locale)
 module.exports.getLocale = () => instance.locale
+module.exports.setPath = dirname => instance.file = dirname
